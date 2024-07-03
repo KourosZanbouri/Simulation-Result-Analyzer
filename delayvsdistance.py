@@ -47,7 +47,7 @@ merged_df = pd.merge_asof(distance_df.sort_values('timestamp'), meanbitlife_df.s
 cleaned_df = merged_df.dropna(subset=['meanbitlife'])
 
 # Group by distance intervals of 1 meter and calculate mean bit life time
-distance_intervals = pd.cut(cleaned_df['distance'], bins=np.arange(135, cleaned_df['distance'].max() + 1, 1))
+distance_intervals = pd.cut(cleaned_df['distance'], bins=np.arange(135, cleaned_df['distance'].max() + 20, 20))
 mean_bit_lifetime_per_interval = cleaned_df.groupby(distance_intervals)['meanbitlife'].mean()
 
 # Plotting
