@@ -32,8 +32,8 @@ distance_data = pd.concat(create_dataframe_in_chunks(distance_timestamps, distan
 # Merge the dataframes on the timestamp column
 merged_data = pd.merge_asof(harqerror_data, distance_data, on='timestamp', suffixes=('_harq', '_distance'))
 
-# Define distance intervals (100m each)
-bins = list(range(0, int(max(merged_data['value_distance'])) + 100, 100))
+# Define distance intervals (500m each)
+bins = list(range(0, int(max(merged_data['value_distance'])) + 50, 50))
 merged_data['distance_bin'] = pd.cut(merged_data['value_distance'], bins)
 
 # Group by distance intervals and calculate sum and count of HARQ errors

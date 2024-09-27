@@ -67,7 +67,7 @@ min_distance = cleaned_df['distance'].min()
 max_distance = cleaned_df['distance'].max()
 
 # Group by distance intervals of 20 meters and calculate mean bit life time
-distance_intervals = pd.cut(cleaned_df['distance'], bins=np.arange(min_distance, max_distance + 20, 20))
+distance_intervals = pd.cut(cleaned_df['distance'], bins=np.arange(min_distance, 561 + 50, 50)) ##561=max_distance
 mean_bit_lifetime_per_interval = cleaned_df.groupby(distance_intervals)['meanbitlife'].mean()
 
 # Plotting
@@ -75,7 +75,7 @@ plt.figure(figsize=(12, 6))
 plt.plot(mean_bit_lifetime_per_interval.index.astype(str), mean_bit_lifetime_per_interval.values, marker='o', label='UE[0]')
 plt.xlabel('Distance (m)')
 plt.ylabel('Mean Bit Lifetime per Packet (End-to-End Latency) (μs)')
-plt.title('Mean Bit Lifetime per Packet vs Distance (20m Intervals)')
+plt.title('Mean Bit Lifetime per Packet vs Distance (50m Intervals)')
 plt.xticks(rotation=45)
 plt.grid(True)
 plt.legend()
