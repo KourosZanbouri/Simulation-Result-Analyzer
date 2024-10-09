@@ -1,0 +1,13 @@
+*.tsnDevice1.app[0].source.packetLength = 498B #427B 68320 bits per second, Traffic  "network control"
+*.tsnDevice1.app[1].source.packetLength = 1453B #121300 bits per second, Traffic "video" 
+*.tsnDevice1.app[2].source.packetLength = 1429B  # 12674.28 bits per second, Traffic "best effort"
+
+## Ref:
+#*.tsnDevice1.app[*].source.packetLength = 1000B - 54B # 42B = 8B (UDP) + 20B (IP) + 14B (ETH MAC) + 4B (ETH FCS) + 8B (ETH PHY)
+#*.tsnDevice1.app[1].source.productionInterval = exponential(400us) # ~20Mbps
+#*.tsnDevice1.app[2].source.productionInterval = exponential(200us) # ~40Mbps
+
+
+*.tsnDevice1.app[0].source.productionInterval = 55ms #50ms Traffic "network control"
+*.tsnDevice1.app[1].source.productionInterval = uniform(60ms, 65ms) #ref:uniform(50ms, 80ms) Traffic "video" 
+*.tsnDevice1.app[2].source.productionInterval = exponential(600ms)  #700ms Traffic "best effort"
