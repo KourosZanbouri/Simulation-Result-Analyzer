@@ -15,7 +15,7 @@ def remove_outliers_iqr(data):
 # Define folder names for each profile-distance combination
 profiles = ['InF-SL', 'InF-DL', 'InF-SH', 'InF-DH']
 distances = ['d1', 'd2', 'd3']
-streams = ['NC']
+streams = ['NC', 'Video', 'BE']
 
 # Dictionary to map folder indices to profile-distance combinations
 folder_map = {
@@ -37,12 +37,12 @@ for folder_index in range(1, 13):
     
     if os.path.exists(file_path):
         data = pd.read_csv(file_path, skiprows=1)  # Skip first row if necessary
-        cleaned_data = remove_outliers_iqr(data)
+        #cleaned_data = remove_outliers_iqr(data)
         
         # Extract the columns for Network Control (2nd), Video (4th), and Best Effort (6th)
-        network_control = cleaned_data.iloc[:, 1]
-        video = cleaned_data.iloc[:, 3]
-        best_effort = cleaned_data.iloc[:, 5]
+        network_control = data.iloc[:, 1]
+        video = data.iloc[:, 3]
+        best_effort = data.iloc[:, 5]
 
         # Append data with relevant labels
         for value in network_control:
@@ -76,7 +76,7 @@ plt.figure(figsize=(14, 8))
 colors = {'NC': 'lightblue', 'Video': 'lightgreen', 'BE': 'lightcoral'}
 
 # Create the boxplot using matplotlib directly
-ax = df_combined.boxplot(column='Value', by='Profile-Distance-Stream', grid=False, showmeans=False, showfliers=False, patch_artist=True, figsize=(14,8))
+ax = df_combined.boxplot(column='Value', by='Profile-Distance-Stream', grid=False, showmeans=True, showfliers=False, patch_artist=True, figsize=(14,8))
 
 # Iterate through the boxes and assign colors based on the stream type
 for i, box in enumerate(ax.patches):  # Accessing boxes via 'patches'

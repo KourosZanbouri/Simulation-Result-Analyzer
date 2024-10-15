@@ -65,7 +65,7 @@ plt.figure(figsize=(14, 8))
 colors = {'NC': 'lightblue', 'Video': 'lightgreen', 'BE': 'lightcoral'}
 
 # Create the boxplot using matplotlib directly
-ax = df_combined.boxplot(column='Value', by='Profile-Distance-Stream', grid=False, showmeans=True, showfliers=False, patch_artist=True, figsize=(14,8))
+ax = df_combined.boxplot(column='Value', by='Profile-Distance-Stream', grid=False, showmeans=True, showfliers=True, patch_artist=True, figsize=(14,8))
 
 # Iterate through the boxes and assign colors based on the stream type
 for i, box in enumerate(ax.patches):  # Accessing boxes via 'patches'
