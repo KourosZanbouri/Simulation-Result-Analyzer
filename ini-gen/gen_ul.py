@@ -30,5 +30,5 @@ def generate_omnet_ini(num_ues, filename="omnet_config_ul.ini"):
         print(f"Configuration file '{filename}' generated successfully!")
 
 # Call the function to generate a configuration file for 5 UEs
-generate_omnet_ini(5)
+generate_omnet_ini(50)
 

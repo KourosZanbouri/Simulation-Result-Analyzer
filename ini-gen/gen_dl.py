@@ -1,4 +1,4 @@
-def generate_omnet_ini(num_ues, filename="MainTest.ini"):
+def generate_omnet_ini(num_ues, filename="omnet_config_dl.ini"):
     with open(filename, "w") as f:
         # General settings for numUe
 #        f.write(f"*.numUe = {num_ues}\n\n")
@@ -26,5 +26,5 @@ def generate_omnet_ini(num_ues, filename="MainTest.ini"):
         print(f"Configuration file '{filename}' generated successfully!")
 
 # Call the function to generate a configuration file for 5 UEs
-generate_omnet_ini(5)
+generate_omnet_ini(10)
 
